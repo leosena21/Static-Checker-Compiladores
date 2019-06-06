@@ -1,0 +1,17 @@
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe.config
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.pdb
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\LeitorDeArquivos\bin\Debug\MySql.Data.xml
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\LeitorDeArquivos\obj\Debug\Compiladores.csproj.CoreCompileInputs.cache
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\LeitorDeArquivos\obj\Debug\Compiladores.csproj.CopyComplete
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.exe
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.pdb
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\Compiladores\bin\Debug\LeitorDeArquivos.exe.config
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\Compiladores\bin\Debug\LeitorDeArquivos.exe
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\Compiladores\bin\Debug\LeitorDeArquivos.pdb
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\Compiladores\bin\Debug\MySql.Data.xml
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\Compiladores\obj\Debug\Compiladores.csprojAssemblyReference.cache
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\Compiladores\obj\Debug\Compiladores.csproj.CoreCompileInputs.cache
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\Compiladores\obj\Debug\Compiladores.csproj.CopyComplete
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\Compiladores\obj\Debug\LeitorDeArquivos.exe
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\Compiladores\obj\Debug\LeitorDeArquivos.pdb

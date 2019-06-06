@@ -1,0 +1,61 @@
+c:\users\lucas\documents\visual studio 2015\Projects\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe.config
+c:\users\lucas\documents\visual studio 2015\Projects\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.csprojResolveAssemblyReference.cache
+C:\Users\Lucas\Documents\Visual Studio 2015\Projects\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe
+C:\Users\Lucas\Documents\Visual Studio 2015\Projects\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.pdb
+C:\Users\Lucas\Documents\Visual Studio 2015\Projects\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.exe
+C:\Users\Lucas\Documents\Visual Studio 2015\Projects\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.pdb
+C:\Users\aluno\Downloads\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe.config
+C:\Users\aluno\Downloads\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.exe
+C:\Users\aluno\Downloads\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.pdb
+C:\Users\aluno\Downloads\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe
+C:\Users\aluno\Downloads\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.pdb
+C:\Users\aluno\Downloads\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.csprojResolveAssemblyReference.cache
+D:\Documentos\Faculdade\5º Trimestre\Linguagem de Programação III\1ª Unidade\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe.config
+D:\Documentos\Faculdade\5º Trimestre\Linguagem de Programação III\1ª Unidade\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe
+D:\Documentos\Faculdade\5º Trimestre\Linguagem de Programação III\1ª Unidade\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.pdb
+D:\Documentos\Faculdade\5º Trimestre\Linguagem de Programação III\1ª Unidade\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.exe
+D:\Documentos\Faculdade\5º Trimestre\Linguagem de Programação III\1ª Unidade\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.pdb
+D:\Documentos\Faculdade\5º Trimestre\Linguagem de Programação III\1ª Unidade\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\MySql.Data.dll
+D:\Documentos\Faculdade\5º Trimestre\Linguagem de Programação III\1ª Unidade\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\MySql.Data.xml
+D:\Documentos\Faculdade\5º Trimestre\Linguagem de Programação III\1ª Unidade\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.csprojResolveAssemblyReference.cache
+E:\5º Trimestre\Linguagem de Programação III\1ª Unidade\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe.config
+E:\5º Trimestre\Linguagem de Programação III\1ª Unidade\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.exe
+E:\5º Trimestre\Linguagem de Programação III\1ª Unidade\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.pdb
+E:\5º Trimestre\Linguagem de Programação III\1ª Unidade\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.csprojResolveAssemblyReference.cache
+C:\Users\aluno\Documents\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe.config
+C:\Users\aluno\Documents\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.exe
+C:\Users\aluno\Documents\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.pdb
+C:\Users\aluno\Documents\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe
+C:\Users\aluno\Documents\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.pdb
+C:\Users\aluno\Documents\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\MySql.Data.dll
+C:\Users\aluno\Documents\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\MySql.Data.xml
+C:\Users\aluno\Documents\Revisão Prova\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.csprojResolveAssemblyReference.cache
+C:\Users\leose\Desktop\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe.config
+C:\Users\leose\Desktop\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe
+C:\Users\leose\Desktop\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.pdb
+C:\Users\leose\Desktop\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\MySql.Data.dll
+C:\Users\leose\Desktop\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\MySql.Data.xml
+C:\Users\leose\Desktop\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.csprojResolveAssemblyReference.cache
+C:\Users\leose\Desktop\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.exe
+C:\Users\leose\Desktop\LeitorDeArquivos\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.pdb
+E:\5º Trimestre\Linguagem de Programação III\1ª Unidade\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe.config
+E:\5º Trimestre\Linguagem de Programação III\1ª Unidade\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe
+E:\5º Trimestre\Linguagem de Programação III\1ª Unidade\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.pdb
+E:\5º Trimestre\Linguagem de Programação III\1ª Unidade\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\MySql.Data.dll
+E:\5º Trimestre\Linguagem de Programação III\1ª Unidade\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\MySql.Data.xml
+E:\5º Trimestre\Linguagem de Programação III\1ª Unidade\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.csprojResolveAssemblyReference.cache
+E:\5º Trimestre\Linguagem de Programação III\1ª Unidade\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.exe
+E:\5º Trimestre\Linguagem de Programação III\1ª Unidade\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.pdb
+C:\Users\Leonardo\Desktop\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.csprojAssemblyReference.cache
+C:\Users\Leonardo\Desktop\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.csproj.CoreCompileInputs.cache
+C:\Users\Leonardo\Desktop\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.exe
+C:\Users\Leonardo\Desktop\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.pdb
+C:\Users\Leonardo\Desktop\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe.config
+C:\Users\Leonardo\Desktop\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.exe
+C:\Users\Leonardo\Desktop\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\LeitorDeArquivos.pdb
+C:\Users\Leonardo\Desktop\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\bin\Debug\MySql.Data.xml
+C:\Users\Leonardo\Desktop\LeitorDeArquivos AV1 - FEITA\LeitorDeArquivos\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.csproj.CopyComplete
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.csprojAssemblyReference.cache
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.csproj.CoreCompileInputs.cache
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.exe
+C:\Users\Leonardo\Google Drive\Documentos\Static-Checker-Compiladores\LeitorDeArquivos\obj\Debug\LeitorDeArquivos.pdb
