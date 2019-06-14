@@ -8,75 +8,60 @@ using System.Data.SqlClient;
 
 namespace Compiladores
 {
-
     public class Lexico
     {
-        public String Matricula;
-        public String Nome;
-        public float Salario;
-        public int Dia;
-        public int Mes;
-        public int Ano;
-        public String Setor;
+        public char[] entrada;
+        bool reservado = false;
+        bool comentario = false;
 
-        public Lexico(String line)
+        public static IDictionary<string, string> palavrasReservadas = new Dictionary<string, string>();
+        public static IDictionary<string, string> simbolosReservadas = new Dictionary<string, string>();
+        public static IDictionary<string, string> tiposReservados = new Dictionary<string, string>();
+
+        public List<Char> caracterList = new List<char>();
+
+        public Lexico(IDictionary<string, string> CompletePalavrasReservadas, IDictionary<string, string>  CompleteSibolosReservados, IDictionary<string, string> CompleteTiposReservados)
         {
-
-            getMatricula(line);
-            getNome(line);
-            getSalario(line);
-            getDia(line);
-            getMes(line);
-            getAno(line);
-            getSetor(line);
+            palavrasReservadas = CompletePalavrasReservadas;
+            simbolosReservadas = CompleteSibolosReservados;
+            tiposReservados = CompleteTiposReservados;
         }
 
-        public void getMatricula(String line)
+        public bool RecebeCaracter(char caracter, bool nextLine)
         {
-            String[] substrings = line.Split(';');
-            Matricula = substrings[0];
-            Console.WriteLine(Matricula);
+            if (nextLine)
+            {
+                StringBuilder stringBuilder = new StringBuilder();
+                foreach(Char c in caracterList)
+                {
+                    stringBuilder.Append(c);
+                }
+                string lex = stringBuilder.ToString();
+                caracterList.Clear();
+            }
+            if (!IsReservado(caracter))
+                caracterList.Add(caracter);
+            
+            return reservado;
+            //entrada.
         }
 
-        public void getNome(String line)
+        private bool IsReservado(char c)
         {
-            String[] substrings = line.Split(';');
-            Nome = substrings[1];
-            Console.WriteLine(Nome);
-        }
+            if (palavrasReservadas.ContainsKey(c.ToString()) || simbolosReservadas.ContainsKey(c.ToString()) || tiposReservados.ContainsKey(c.ToString()))
+            {
+                reservado = true;
+                return true;
+            }
 
-        public void getSalario(String line)
-        {
-            String[] substrings = line.Split(';');
-            Salario = float.Parse(substrings[2]);
-            Console.WriteLine(Salario);
-        }
+            if(c == ' ')
+            {
+                reservado = true;
+                return true;
+            }
 
-        public void getDia(String line)
-        {
-            String[] substrings = line.Split(';');
-            Dia = int.Parse(substrings[3]);
-            Console.WriteLine(Dia);
+            return false;
         }
-        public void getMes(String line)
-        {
-            String[] substrings = line.Split(';');
-            Mes = int.Parse(substrings[4]);
-            Console.WriteLine(Mes);
-        }
-        public void getAno(String line)
-        {
-            String[] substrings = line.Split(';');
-            Ano = int.Parse(substrings[5]);
-            Console.WriteLine(Ano);
-        }
-        public void getSetor(String line)
-        {
-            String[] substrings = line.Split(';');
-            Setor = substrings[6];
-            Console.WriteLine(Setor);
-        }
-
     }
 }
 
