@@ -14,14 +14,14 @@ int main (int argc, char **argv)
 {
 	//int aux;
 	//char[] definicoes[9]={ID, PR, OS, intcon, realcon, caraccon, cadeiacon, booleano, INEXISTENTE};
-	char NamePath[500];
+	char namePath[500];
 	
 	printf("Digite o nome ou caminho do arquivo: \n");
 	scanf("%s", &NamePath);
-	
-    if(!(f = fopen(NamePath,"r")))
+	strcat(namePath, ".191");
+    if(!(f = fopen(namePath,"r")))
     {
-        printf( "O arquivo nao pode ser aberto.\n" );
+        printf( "O arquivo nao pode ser aberto ou nao foi encontrado.\n" );
         system("pause");
         exit(0);
     }
