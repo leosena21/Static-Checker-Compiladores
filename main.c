@@ -14,8 +14,12 @@ int main (int argc, char **argv)
 {
 	//int aux;
 	//char[] definicoes[9]={ID, PR, OS, intcon, realcon, caraccon, cadeiacon, booleano, INEXISTENTE};
+	char NamePath[500];
 	
-    if(!(f = fopen("codigo.191","r")))
+	printf("Digite o nome ou caminho do arquivo: \n");
+	scanf("%s", &NamePath);
+	
+    if(!(f = fopen(NamePath,"r")))
     {
         printf( "O arquivo nao pode ser aberto.\n" );
         system("pause");
