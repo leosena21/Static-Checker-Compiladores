@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -8,7 +8,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
     {
         public static IDictionary<string, string> palavrasReservadas = new Dictionary<string, string>();
         public static IDictionary<string, string> simbolosReservadas = new Dictionary<string, string>();
-        public static IDictionary<string, string> tiposReservados    = new Dictionary<string, string>();
+        public static IDictionary<string, string> tiposReservados = new Dictionary<string, string>();
         public static int linha = 0;
 
         static void Main(string[] args)
@@ -24,7 +24,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
             reader = new StreamReader(namePath);
             AnalisadorLexico analisador = new AnalisadorLexico(reader);
             do
-            {                
+            {
                 ch = (char)reader.Read();
                 token = analisador.Analex(ch);
                 switch (token.Categoria.Codigo)

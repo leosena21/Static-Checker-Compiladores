@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ANALISADOR LEXICO ENGCOMP201902", "ANALISADOR LEXICO ENGCOMP201902\ANALISADOR LEXICO ENGCOMP201902.csproj", "{BABC72F1-5ABF-472E-B3F2-0F0C151D9EF4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BABC72F1-5ABF-472E-B3F2-0F0C151D9EF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BABC72F1-5ABF-472E-B3F2-0F0C151D9EF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BABC72F1-5ABF-472E-B3F2-0F0C151D9EF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BABC72F1-5ABF-472E-B3F2-0F0C151D9EF4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CB25537D-E3ED-440D-BAE6-4175E9E6CF52}
+	EndGlobalSection
+EndGlobal

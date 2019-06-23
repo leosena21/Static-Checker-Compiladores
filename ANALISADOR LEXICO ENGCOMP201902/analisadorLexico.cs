@@ -36,7 +36,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                             if (character == '\n')
                                 Program.linha++;
                             character = (char)Reader.Read();
-                            
+
                             break;
                         }
                         else if (char.IsLetter(character))
@@ -50,12 +50,12 @@ namespace ENGCOMP022019_ANALISADORLEXICO
 
                         else
                         {
-                            tk.Categoria = new Categoria() {Nome = "INEXISTENTE", Codigo = 999 };
+                            tk.Categoria = new Categoria() { Nome = "INEXISTENTE", Codigo = 999 };
                             tk.Codigo = "INE";
                             tk.LinhasApareceu.Add(Program.linha);
                             return tk;
                         }
-                        break;          
+                        break;
 
                     case 1:
                         if (char.IsLetterOrDigit(character))
@@ -72,10 +72,10 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         break;
                     default:
                         break;
-                }     
+                }
 
-                    
-               
+
+
             }
             return tk;
         }
