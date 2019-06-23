@@ -41,6 +41,14 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         Console.WriteLine("Tipo Reservado");
                         Console.WriteLine(token.Lexeme);
                         break;
+                    case "INT":
+                        Console.WriteLine("INTEIRO");
+                        Console.WriteLine(token.Lexeme);
+                        break;
+                    case "FLO":
+                        Console.WriteLine("FLOAT");
+                        Console.WriteLine(token.Lexeme);
+                        break;
 
                     //case 2:
                     //    //printf("%s\n", "Operador e Sinal");
@@ -71,8 +79,9 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     //    //printf("%s\n", tk.valorInteiro);
                     //    break;
 
-                    case "NUL":
-                        //printf("%s\n", "Inexistente");
+                    case "INE":
+                        Console.WriteLine(token.Categoria.Nome);
+                        Console.WriteLine(token.Lexeme);
                         break;
 
                     case "COM":

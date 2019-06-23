@@ -30,7 +30,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                 switch (estado)
                 {
                     case 0:
-                        if (character == ' ' || character == '\n' || character == '\t')
+                        if (character == ' ' || character == '\n' || character == '\t' || character == '\r')
                         {
                             estado = 0;
                             if (character == '\n')
@@ -131,7 +131,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         {
                             tk.Categoria = new Categoria() { Nome = "INEXISTENTE", Codigo = "NUL" };
                             tk.Codigo = "INE";
-
+                            tk.Lexeme = "";
                             tk.LinhasApareceu.Add(Program.linha);
                             estado = 0;
                             return tk;
@@ -150,6 +150,26 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                             else
                                 character = (char)Reader.Read();
                         }
+                        break;
+
+                    case 2:
+                        if (char.IsDigit(character))
+                            stringAux = stringAux + character;
+                        else if(character == '.')
+                        {
+                            stringAux = stringAux + character;
+                            estado = 30;
+                        }
+                        if (!(char.IsDigit((char)Reader.Peek())) && (char)Reader.Peek() != '.' && estado !=30)
+                        {
+                            estado = 31;
+                        }
+                        else
+                        {
+                            if(estado != 30)
+                                character = (char)Reader.Read();
+                        }
+
                         break;
 
                     case 3:
@@ -408,7 +428,54 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         {
                             character = (char)Reader.Read();
                         }
+                        character = (char)Reader.Read();
+                        estado = 0;
                         break;
+                    case 30://case26
+                        if (char.IsDigit((char)Reader.Peek()))
+                        {
+                            character = (char)Reader.Read();
+                            estado = 32;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Tentativa de formar um float");
+                            tk.Categoria = new Categoria() { Nome = "INEXISTENTE", Codigo = "NUL" };
+                            tk.Lexeme = stringAux;
+                            tk.Codigo = "INE";
+                            stringAux = "";
+                            estado = 0;
+                            return tk;
+                        }
+                        break;
+                    case 31: //case25
+                        tk.ValorInteiro = Convert.ToInt32(stringAux);
+                        tk.Categoria = new Categoria() { Nome = "INTEIRO", Codigo = "INT" };
+                        tk.Lexeme = stringAux;
+                        tk.Codigo = "INT";
+                        stringAux = "";
+                        estado = 0;
+                        return tk;
+                    case 32://case 27
+
+                        if (char.IsDigit(character))
+                        {
+                            stringAux = stringAux + character;
+                            character = (char)Reader.Read();
+                        }
+                        else
+                        {
+                            estado = 33;
+                        }
+                        break;
+                    case 33:
+                        tk.ValorFloat = (float)Convert.ToDouble(stringAux);
+                        tk.Categoria = new Categoria() { Nome = "FLOAT", Codigo = "FLO" };
+                        tk.Lexeme = stringAux;
+                        tk.Codigo = "FLO";
+                        stringAux = "";
+                        estado = 0;
+                        return tk;
 
                     default:
                         break;
