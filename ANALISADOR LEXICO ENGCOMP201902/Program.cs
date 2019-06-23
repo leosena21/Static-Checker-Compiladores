@@ -74,6 +74,9 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case "NUL":
                         //printf("%s\n", "Inexistente");
                         break;
+
+                    case "COM":
+                        break;
                 }
 
 

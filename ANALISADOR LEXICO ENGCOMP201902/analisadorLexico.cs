@@ -8,7 +8,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
     public class AnalisadorLexico
     {
         StreamReader Reader { get; set; }
-        Token tk = new Token();
+        Token tk = new Token() {Codigo = "COM"};
         int i = 0;
         int j = 0;
         int estado = 0;
@@ -63,6 +63,14 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         {
                             estado = 6;
                         }
+                        else if (character == '&')
+                        {
+                            estado = 7;
+                        }
+                        else if (character == '#')
+                        {
+                            estado = 8;
+                        }
                         else if (character == '<')
                         {
                             estado = 9;
@@ -74,6 +82,10 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         else if (character == '=')
                         {
                             estado = 11;
+                        }
+                        else if (character == '!')
+                        {
+                            estado = 12;
                         }
                         else if (character == ';')
                         {
@@ -90,6 +102,30 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         else if (character == ']')
                         {
                             estado = 17;
+                        }
+                        else if (character == '{')
+                        {
+                            estado = 18;
+                        }
+                        else if (character == '}')
+                        {
+                            estado = 22;
+                        }
+                        else if (character == '%')
+                        {
+                            estado = 23;
+                        }
+                        else if (character == '*')
+                        {
+                            estado = 25;
+                        }
+                        else if (character == '|')
+                        {
+                            estado = 26;
+                        }
+                        else if (character == '/')
+                        {
+                            estado = 27;
                         }
                         else
                         {
@@ -136,6 +172,18 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         return tk;
                     case 6:
                         tk.Categoria = new Categoria() { Nome = "MENOS", Codigo = Program.palavrasReservadas[character.ToString()] };
+                        tk.Lexeme = character.ToString();
+                        tk.Codigo = "SR";
+                        estado = 0;
+                        return tk;
+                    case 7:
+                        tk.Categoria = new Categoria() { Nome = "E_COMERCIAL", Codigo = Program.palavrasReservadas[character.ToString()] };
+                        tk.Lexeme = character.ToString();
+                        tk.Codigo = "SR";
+                        estado = 0;
+                        return tk;
+                    case 8:
+                        tk.Categoria = new Categoria() { Nome = "SHARP", Codigo = Program.palavrasReservadas[character.ToString()] };
                         tk.Lexeme = character.ToString();
                         tk.Codigo = "SR";
                         estado = 0;
@@ -193,6 +241,30 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                             return tk;
                         }
                         break;
+                    case 12:
+                        if ((char)Reader.Peek() == '=')
+                        {
+                            estado = 13;
+                            stringAux = stringAux + character;
+                            character = (char)Reader.Read();
+                            stringAux = stringAux + character;
+                        }
+                        else
+                        {
+                            tk.Categoria = new Categoria() { Nome = "EXCLAMACAO", Codigo = Program.palavrasReservadas[character.ToString()] };
+                            tk.Lexeme = character.ToString();
+                            tk.Codigo = "SR";
+                            estado = 0;
+                            return tk;
+                        }
+                        break;
+                    case 13:
+                        tk.Categoria = new Categoria() { Nome = "DIFERENTE", Codigo = Program.palavrasReservadas[character.ToString()] };
+                        tk.Lexeme = stringAux;
+                        tk.Codigo = "SR";
+                        stringAux = "";
+                        estado = 0;
+                        return tk;
                     case 14:
                         tk.Categoria = new Categoria() { Nome = "PONTO_E_VIRGULA", Codigo = Program.palavrasReservadas[character.ToString()] };
                         tk.Lexeme = character.ToString();
@@ -213,6 +285,18 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         return tk;
                     case 17:
                         tk.Categoria = new Categoria() { Nome = "FECHA_COLCHETES", Codigo = Program.palavrasReservadas[character.ToString()] };
+                        tk.Lexeme = character.ToString();
+                        tk.Codigo = "SR";
+                        estado = 0;
+                        return tk;
+                    case 18:
+                        tk.Categoria = new Categoria() { Nome = "ABRE_CHAVES", Codigo = Program.palavrasReservadas[character.ToString()] };
+                        tk.Lexeme = character.ToString();
+                        tk.Codigo = "SR";
+                        estado = 0;
+                        return tk;
+                    case 22:
+                        tk.Categoria = new Categoria() { Nome = "FECHA_CHAVES", Codigo = Program.palavrasReservadas[character.ToString()] };
                         tk.Lexeme = character.ToString();
                         tk.Codigo = "SR";
                         estado = 0;
@@ -238,11 +322,13 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         stringAux = "";
                         estado = 0;
                         return tk;
-
-
-
+                    case 23:
+                        tk.Categoria = new Categoria() { Nome = "PERCENTUAL", Codigo = Program.palavrasReservadas[character.ToString()] };
+                        tk.Lexeme = character.ToString();
+                        tk.Codigo = "SR";
+                        estado = 0;
+                        return tk;
                     case 24:
-                        var oLoco = Program.palavrasReservadas.ContainsKey(stringAux);
                         if (Program.palavrasReservadas.ContainsKey(stringAux))
                         {
                             tk.Lexeme = stringAux;
@@ -264,6 +350,66 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         character = (char)Reader.Read();
                         estado = 0;
                         break;
+                    case 25:
+                        tk.Categoria = new Categoria() { Nome = "ASTERISCO", Codigo = Program.palavrasReservadas[character.ToString()] };
+                        tk.Lexeme = character.ToString();
+                        tk.Codigo = "SR";
+                        estado = 0;
+                        return tk;                   
+                    case 26:
+                        tk.Categoria = new Categoria() { Nome = "PIPE", Codigo = Program.palavrasReservadas[character.ToString()] };
+                        tk.Lexeme = character.ToString();
+                        tk.Codigo = "SR";
+                        estado = 0;
+                        return tk;
+                    case 27:
+                        if ((char)Reader.Peek() == '/')
+                        {
+                            estado = 28;
+                            character = (char)Reader.Read();                           
+                        }
+                        else if ((char)Reader.Peek() == '*')
+                        {
+                            estado = 29;
+                            character = (char)Reader.Read();
+                            character = (char)Reader.Read();
+                        }
+                        else
+                        {
+                            tk.Categoria = new Categoria() { Nome = "DIVISAO", Codigo = Program.palavrasReservadas[character.ToString()] };
+                            tk.Lexeme = character.ToString();
+                            tk.Codigo = "SR";
+                            estado = 0;
+                            return tk;
+                        }
+                        break;
+                    case 28:
+                        if(character == '\n')
+                        {
+                            estado = 0;
+                        }
+                        else
+                        {
+                            character = (char)Reader.Read();
+                        }
+                        break;
+
+                    case 29:
+                        if (character == '*')
+                        {
+                            character = (char)Reader.Read();
+                            if (character == '/')
+                            {
+                                estado = 0;
+                                character = (char)Reader.Read();
+                            }
+                        }
+                        else
+                        {
+                            character = (char)Reader.Read();
+                        }
+                        break;
+
                     default:
                         break;
                 }
