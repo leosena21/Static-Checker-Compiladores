@@ -8,7 +8,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
     public class AnalisadorLexico
     {
         StreamReader Reader { get; set; }
-        Token tk;
+        Token tk = new Token();
         int i = 0;
         int j = 0;
         int estado = 0;
@@ -50,7 +50,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
 
                         else
                         {
-                            tk.Categoria = new Categoria() { Nome = "INEXISTENTE", Codigo = 999 };
+                            tk.Categoria = new Categoria() { Nome = "INEXISTENTE", Codigo = "NUL" };
                             tk.Codigo = "INE";
                             tk.LinhasApareceu.Add(Program.linha);
                             return tk;
@@ -61,14 +61,44 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         if (char.IsLetterOrDigit(character))
                         {
                             stringAux = stringAux + character;
-                            if (char.IsLetterOrDigit((char)Reader.Peek()))
+                            if (!(char.IsLetterOrDigit((char)Reader.Peek())))
                             {
-                                stringAux = stringAux + '\0';
-                                estado = 24;
+                                if(character != '-')
+                                    estado = 24;
                             }
                             else
                                 character = (char)Reader.Read();
                         }
+                        break;
+
+
+
+
+
+
+
+                    case 24:
+                        var oLoco = Program.palavrasReservadas.ContainsKey(stringAux);
+                        if (Program.palavrasReservadas.ContainsKey(stringAux))
+                        {
+                            tk.Lexeme = stringAux;
+                            tk.Categoria = new Categoria() { Nome = stringAux, Codigo = Program.palavrasReservadas[stringAux] };
+                            tk.Codigo = "PR";
+                            stringAux = "";
+                            estado = 0;
+                            return tk;
+                        }
+                        else if (Program.tiposReservados.ContainsKey(stringAux))
+                        {
+                            tk.Lexeme = stringAux;
+                            tk.Categoria = new Categoria() { Nome = stringAux, Codigo = Program.tiposReservados[stringAux] };
+                            tk.Codigo = "TR";
+                            stringAux = "";
+                            estado = 0;
+                            return tk;
+                        }
+                        character = (char)Reader.Read();
+                        estado = 0;
                         break;
                     default:
                         break;

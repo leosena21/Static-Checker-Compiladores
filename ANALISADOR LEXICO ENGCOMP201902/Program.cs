@@ -7,7 +7,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
     public class Program
     {
         public static IDictionary<string, string> palavrasReservadas = new Dictionary<string, string>();
-        public static IDictionary<string, string> simbolosReservadas = new Dictionary<string, string>();
+        public static IDictionary<string, string> simbolosReservados = new Dictionary<string, string>();
         public static IDictionary<string, string> tiposReservados = new Dictionary<string, string>();
         public static int linha = 0;
 
@@ -21,54 +21,57 @@ namespace ENGCOMP022019_ANALISADORLEXICO
             int Tchar = 0;
             StreamReader reader;
             Token token;
+            CompletePalavrasReservadas();
+            CompleteSibolosReservados();
+            CompleteTiposReservados();
             reader = new StreamReader(namePath);
             AnalisadorLexico analisador = new AnalisadorLexico(reader);
             do
             {
                 ch = (char)reader.Read();
                 token = analisador.Analex(ch);
-                switch (token.Categoria.Codigo)
+                switch (token.Codigo)
                 {
-                    case 0:
-                        //printf("%s - ", "Identificador");
-                        //printf("%s\n", tk.lexema);
+                    case "PR":
+                        Console.WriteLine("Palavra Reservada");
+                        Console.WriteLine(token.Lexeme);
                         break;
 
-                    case 1:
-                        //printf("%s - ", "Palavra Reservada");
-                        //printf("%d\n", tk.codigo);
+                    case "TR":
+                        Console.WriteLine("Tipo Reservado");
+                        Console.WriteLine(token.Lexeme);
                         break;
 
-                    case 2:
-                        //printf("%s\n", "Operador e Sinal");
-                        break;
+                    //case 2:
+                    //    //printf("%s\n", "Operador e Sinal");
+                    //    break;
 
-                    case 3:
-                        //printf("%s - ", "Inteiro");
-                        //printf("%d\n", tk.valorInteiro);
-                        break;
+                    //case 3:
+                    //    //printf("%s - ", "Inteiro");
+                    //    //printf("%d\n", tk.valorInteiro);
+                    //    break;
 
-                    case 4:
-                        //printf("%s - ", "Real");
-                        //printf("%f\n", tk.valorFloat);
-                        break;
+                    //case 4:
+                    //    //printf("%s - ", "Real");
+                    //    //printf("%f\n", tk.valorFloat);
+                    //    break;
 
-                    case 5:
-                        //printf("%s - ", "Caracter");
-                        //printf("%c\n", tk.caractere);
-                        break;
+                    //case 5:
+                    //    //printf("%s - ", "Caracter");
+                    //    //printf("%c\n", tk.caractere);
+                    //    break;
 
-                    case 6:
-                        //printf("%s - ", "Cadeia de Caracter");
-                        //printf("%s\n", tk.lexema);
-                        break;
+                    //case 6:
+                    //    //printf("%s - ", "Cadeia de Caracter");
+                    //    //printf("%s\n", tk.lexema);
+                    //    break;
 
-                    case 7:
-                        //printf("%s - ", "Booleano");
-                        //printf("%s\n", tk.valorInteiro);
-                        break;
+                    //case 7:
+                    //    //printf("%s - ", "Booleano");
+                    //    //printf("%s\n", tk.valorInteiro);
+                    //    break;
 
-                    case 8:
+                    case "NUL":
                         //printf("%s\n", "Inexistente");
                         break;
                 }
@@ -86,61 +89,60 @@ namespace ENGCOMP022019_ANALISADORLEXICO
 
         public static void CompleteTiposReservados()
         {
-            tiposReservados.Add("Character", "C01");
-            tiposReservados.Add("Constant-String", "C02");
-            tiposReservados.Add("Float-Number", "C03");
-            tiposReservados.Add("Function", "C04");
-            tiposReservados.Add("Identifier", "C05");
-            tiposReservados.Add("Integer-Number", "C06");
+            tiposReservados.Add("CHARACTER", "C01");
+            tiposReservados.Add("CONSTANT-STRING", "C02");
+            tiposReservados.Add("FLOAT-NUMBER", "C03");
+            tiposReservados.Add("FUNCTION", "C04");
+            tiposReservados.Add("IDENTIFIER", "C05");
+            tiposReservados.Add("INTEGER-NUMBER", "C06");
         }
 
         public static void CompleteSibolosReservados()
         {
-            palavrasReservadas.Add("!=", "B01");
-            palavrasReservadas.Add("#", "B01");
-            palavrasReservadas.Add("&", "B02");
-            palavrasReservadas.Add("(", "B03");
-            palavrasReservadas.Add("/", "B04");
-            palavrasReservadas.Add(";", "B05");
-            palavrasReservadas.Add("[", "B06");
-            palavrasReservadas.Add("{", "B07");
-            palavrasReservadas.Add("+", "B08");
-            palavrasReservadas.Add("<=", "B09");
-            palavrasReservadas.Add("=", "B10");
-            palavrasReservadas.Add(">=", "B11");
-
-            palavrasReservadas.Add("!", "B12");
-            palavrasReservadas.Add("%", "B13");
-            palavrasReservadas.Add(")", "B14");
-            palavrasReservadas.Add("*", "B15");
-            palavrasReservadas.Add(",", "B16");
-            palavrasReservadas.Add("]", "B17");
-            palavrasReservadas.Add("|", "B18");
-            palavrasReservadas.Add("}", "B19");
-            palavrasReservadas.Add("<", "B20");
-            palavrasReservadas.Add("==", "B21");
-            palavrasReservadas.Add(">", "B22");
-            palavrasReservadas.Add("-", "B23");
+            simbolosReservados.Add("!=", "B01");
+            simbolosReservados.Add("#", "B01");
+            simbolosReservados.Add("&", "B02");
+            simbolosReservados.Add("(", "B03");
+            simbolosReservados.Add("/", "B04");
+            simbolosReservados.Add(";", "B05");
+            simbolosReservados.Add("[", "B06");
+            simbolosReservados.Add("{", "B07");
+            simbolosReservados.Add("+", "B08");
+            simbolosReservados.Add("<=", "B09");
+            simbolosReservados.Add("=", "B10");
+            simbolosReservados.Add(">=", "B11");
+            simbolosReservados.Add("!", "B12");
+            simbolosReservados.Add("%", "B13");
+            simbolosReservados.Add(")", "B14");
+            simbolosReservados.Add("*", "B15");
+            simbolosReservados.Add(",", "B16");
+            simbolosReservados.Add("]", "B17");
+            simbolosReservados.Add("|", "B18");
+            simbolosReservados.Add("}", "B19");
+            simbolosReservados.Add("<", "B20");
+            simbolosReservados.Add("==", "B21");
+            simbolosReservados.Add(">", "B22");
+            simbolosReservados.Add("-", "B23");
 
         }
 
         public static void CompletePalavrasReservadas()
         {
-            palavrasReservadas.Add("Bool", "A01");
-            palavrasReservadas.Add("While", "A02");
-            palavrasReservadas.Add("Break", "A03");
-            palavrasReservadas.Add("Void", "A04");
-            palavrasReservadas.Add("Char", "A05");
-            palavrasReservadas.Add("True", "A06");
-            palavrasReservadas.Add("Else", "A07");
-            palavrasReservadas.Add("String", "A08");
-            palavrasReservadas.Add("End", "A09");
-            palavrasReservadas.Add("Return", "A10");
-            palavrasReservadas.Add("False", "A11");
-            palavrasReservadas.Add("Program", "A12");
-            palavrasReservadas.Add("Float", "A13");
-            palavrasReservadas.Add("Int", "A14");
-            palavrasReservadas.Add("If", "A15");
+            palavrasReservadas.Add("BOOL", "A01");
+            palavrasReservadas.Add("WHILE", "A02");
+            palavrasReservadas.Add("BREAK", "A03");
+            palavrasReservadas.Add("VOID", "A04");
+            palavrasReservadas.Add("CHAR", "A05");
+            palavrasReservadas.Add("TRUE", "A06");
+            palavrasReservadas.Add("ELSE", "A07");
+            palavrasReservadas.Add("STRING", "A08");
+            palavrasReservadas.Add("END", "A09");
+            palavrasReservadas.Add("RETURN", "A10");
+            palavrasReservadas.Add("FALSE", "A11");
+            palavrasReservadas.Add("PROGRAM", "A12");
+            palavrasReservadas.Add("FLOAT", "A13");
+            palavrasReservadas.Add("INT", "A14");
+            palavrasReservadas.Add("IF", "A15");
         }
     }
 }
