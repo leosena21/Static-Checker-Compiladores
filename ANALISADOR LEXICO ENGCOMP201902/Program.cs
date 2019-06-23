@@ -77,6 +77,8 @@ namespace ENGCOMP022019_ANALISADORLEXICO
 
                     case "COM":
                         break;
+                    case "CH":
+                        break;
                 }
 
 

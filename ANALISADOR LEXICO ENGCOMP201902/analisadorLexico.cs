@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 
@@ -14,6 +15,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
         int estado = 0;
         char character;
         string stringAux;
+        bool existeChar;
         public AnalisadorLexico(StreamReader reader)
         {
             Reader = reader;
@@ -126,6 +128,11 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         else if (character == '/')
                         {
                             estado = 27;
+                        }
+                        else if (character == '\'')
+                        {
+                            estado = 34;
+                            stringAux = stringAux + character;
                         }
                         else
                         {
@@ -410,6 +417,50 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         }
                         break;
 
+                    case 34:
+                        if (Char.GetUnicodeCategory((char)Reader.Peek()) != UnicodeCategory.Control && (char)Reader.Peek() != '\\')
+                        {
+                            if(existeChar && (char)Reader.Peek() == '\'')
+                            {
+                                character = (char)Reader.Read();
+                                stringAux = stringAux + character;
+                                tk.Categoria = new Categoria() { Nome = "CHAR", Codigo = "CH" };
+                                tk.Lexeme = stringAux;
+                                tk.Codigo = "CH";
+                                estado = 0;
+                                existeChar = false;
+                                stringAux = "";
+                                character = (char)Reader.Read();
+                                return tk;
+                            }
+                            if (!existeChar)
+                            {
+                                character = (char)Reader.Read();
+                                stringAux = stringAux + character;
+                                existeChar = true;
+                            }
+                            else
+                            {
+                                if(character != '\'')
+                                    character = (char)Reader.Read();
+                                else
+                                {
+                                    character = (char)Reader.Read();
+                                    existeChar = false;
+                                    stringAux = "";
+                                    estado = 0;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            tk.Categoria = new Categoria() { Nome = "ATRIBUICAO", Codigo = Program.palavrasReservadas[character.ToString()] };
+                            tk.Lexeme = character.ToString();
+                            tk.Codigo = "SR";
+                            estado = 0;
+                            return tk;
+                        }
+                        break;
                     default:
                         break;
                 }
