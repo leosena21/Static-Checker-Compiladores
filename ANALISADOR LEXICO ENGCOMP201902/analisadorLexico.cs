@@ -25,11 +25,26 @@ namespace ENGCOMP022019_ANALISADORLEXICO
 
         public void ClearToken()
         {
+            estado = 0;
+            stringAux = null;
             tk.Caractere = ' ';
             tk.Lexeme = "";
-            tk.ValorFloat = 0;
-            tk.ValorInteiro = 0;
             tk.Codigo = null;
+            tk.LinhasApareceu.Clear();
+        }
+
+        private void Tam(String stringAux)
+        {
+            if (stringAux.Length > 35)
+            {
+                tk.Tamanho1 = 35;
+                tk.Tamanho2 = stringAux.Length;
+            }
+            else
+            {
+                tk.Tamanho1 = stringAux.Length;
+                tk.Tamanho2 = 0;
+            }
         }
         public Token Analex(char character)
         {
@@ -506,19 +521,14 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                             tk.Lexeme = stringAux;
                             tk.Codigo = "INE";
                             tk.LinhasApareceu.Add(Program.linha);
-                            stringAux = "";
-                            estado = 0;
                             return tk;
                         }
                         break;
                     case 31: //case25
-                        tk.ValorInteiro = Convert.ToInt32(stringAux);
                         tk.Categoria = new Categoria() { Nome = "INTEIRO", Codigo = "INT" };
                         tk.Lexeme = stringAux;
                         tk.Codigo = "INT";
-                        tk.LinhasApareceu.Add(Program.linha);
-                        stringAux = "";
-                        estado = 0;
+                        Tam(stringAux);
                         return tk;
                     case 32://case 27
 
@@ -534,13 +544,11 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         }
                         break;
                     case 33:
-                        tk.ValorFloat = (float)Convert.ToDouble(stringAux);
                         tk.Categoria = new Categoria() { Nome = "FLOAT", Codigo = "FLO" };
                         tk.Lexeme = stringAux;
                         tk.Codigo = "FLO";
                         tk.LinhasApareceu.Add(Program.linha);
-                        stringAux = "";
-                        estado = 0;
+                        Tam(stringAux);
                         return tk;
 
                     case 34:
@@ -606,7 +614,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                                 tk.Lexeme = stringAux;
                                 tk.Codigo = "ST";
                                 tk.LinhasApareceu.Add(Program.linha);
-                                tk.ContadorCaracteresParaFormacao = contadorChar;
+                                tk.Tamanho2 = contadorChar;
                                 estado = 0;
                                 stringAux = "";
                                 contadorChar = 0;
