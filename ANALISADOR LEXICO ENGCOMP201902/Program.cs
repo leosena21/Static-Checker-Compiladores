@@ -57,6 +57,9 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         break;
                     case "FUN":
                         Console.WriteLine(token.Categoria.Nome);
+                        break;
+                    case "SR":
+                        Console.WriteLine("Simbolo Reservado");
                         Console.WriteLine(token.Lexeme);
                         break;
 
