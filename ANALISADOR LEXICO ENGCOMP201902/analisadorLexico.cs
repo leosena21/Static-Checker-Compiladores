@@ -13,6 +13,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
         int i = 0;
         int j = 0;
         int estado = 0;
+        int contadorChar;
         char character;
         string stringAux;
         bool existeChar;
@@ -138,6 +139,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         {
                             estado = 35;
                             stringAux = stringAux + character;
+                            contadorChar++;
                         }
                         else
                         {
@@ -583,40 +585,50 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                             {
                                 character = (char)Reader.Read();
                                 stringAux = stringAux + character;
-                                tk.Categoria = new Categoria() { Nome = "MIDDLE-STRING", Codigo = "CH" };
+                                contadorChar++;
+                                tk.Categoria = new Categoria() { Nome = "MIDDLE-STRING", Codigo = "ST" };
                                 tk.Lexeme = stringAux;
                                 tk.Codigo = "ST";
                                 tk.LinhasApareceu.Add(Program.linha);
+                                tk.ContadorCaracteresParaFormacao = contadorChar;
                                 estado = 0;
                                 stringAux = "";
+                                contadorChar = 0;
                                 character = (char)Reader.Read();
                                 return tk;
                             }
-                            if (!existeChar)
+                            if (stringAux.Length <= 34)
                             {
                                 character = (char)Reader.Read();
                                 stringAux = stringAux + character;
-                                existeChar = true;
+                                contadorChar++;
                             }
                             else
-                            {
-                                if (character != '\'')
-                                    character = (char)Reader.Read();
-                                else
+                            {                               
+                                if (Reader.EndOfStream)
                                 {
-                                    character = (char)Reader.Read();
-                                    existeChar = false;
-                                    stringAux = "";
+                                    tk.Categoria = new Categoria() { Nome = "INEXISTENTE", Codigo = "NUL" };
+                                    tk.Codigo = "INE";
+                                    tk.Lexeme = "";
+                                    tk.LinhasApareceu.Add(Program.linha);
                                     estado = 0;
+                                    contadorChar = 0;
+                                    stringAux = "";                                   
+                                    return tk;
                                 }
+                                character = (char)Reader.Read();
+                                contadorChar++;
                             }
                         }
                         else
                         {
-                            tk.Categoria = new Categoria() { Nome = "ATRIBUICAO", Codigo = Program.palavrasReservadas[character.ToString()] };
-                            tk.Lexeme = character.ToString();
-                            tk.Codigo = "SR";
+                            tk.Categoria = new Categoria() { Nome = "INEXISTENTE", Codigo = "NUL" };
+                            tk.Codigo = "INE";
+                            tk.Lexeme = "";
+                            tk.LinhasApareceu.Add(Program.linha);
                             estado = 0;
+                            contadorChar = 0;
+                            stringAux = "";
                             return tk;
                         }
                         break;
