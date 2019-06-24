@@ -37,7 +37,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
 
             //char ch = (char)Reader.Read();
             //FAZER A ANALISE
-            while (!Reader.EndOfStream)
+            while (1==1)
             {
 
                 character = Char.ToUpper(character);
