@@ -121,14 +121,20 @@ namespace ENGCOMP022019_ANALISADORLEXICO
             
             //TABELA DE SIMBOLOS                    
             arquivoTabela = File.CreateText(CaminhoNome + ".TAB");  //utilizando o metodo para criar um arquivo texto e associando o caminho e nome ao metodo                      
-            arquivoTabela.WriteLine("Tabela de Símbolos"); //escrevendo o titulo   
-            arquivoTabela.WriteLine(); //pulando linha sem escrita  
+            arquivoTabela.WriteLine("RELATORIO DA TABELA DE SIMBOLOS"); //escrevendo o titulo   
+            arquivoTabela.WriteLine("EQUIPE BRULEOTAR");
+            arquivoTabela.WriteLine("NOME: BRUNA ANDRADE      TEL: 071-999509445   EMAIL: brunar2d2@gmail.com ");
+            arquivoTabela.WriteLine("NOME: LEONARDO SENA     TEL: 071-99249-2638   EMAIL: leeosena21@gmail.com ");
+            arquivoTabela.WriteLine("NOME: TARCIO CARVALHO      TEL:071-992284977   EMAIL: tarcioc2@gmail.com  ");
+            arquivoTabela.WriteLine("");
+            arquivoTabela.WriteLine("DETALHES \n");
+            arquivoTabela.WriteLine("estrutura:   índice | Código | Lexeme | Tamanho antes de truncar | Tamanho depois de truncar | Categoria | Linhas que apareceu");
 
 
-            int i = 1;
+            int i = 0;
             foreach (Token tok in tokensList)
             {
-                arquivoTabela.Write($"{i} {tok.Categoria.Codigo} {tok.Lexeme} {tok.Tamanho1} {tok.Tamanho2} {tok.Codigo} ");
+                arquivoTabela.Write($"{i} {tok.Categoria.Codigo} | {tok.Lexeme} | {tok.Tamanho1} | {tok.Tamanho2} | {tok.Codigo} | ");
                 for(int j = 0; j< tok.LinhasApareceu.Count; j++)
                 {
                     arquivoTabela.Write(tok.LinhasApareceu[j].ToString() + ",");
@@ -142,10 +148,10 @@ namespace ENGCOMP022019_ANALISADORLEXICO
 
             //RELATORIA ANALISE LEXICA
             relatorioLexica = File.CreateText(CaminhoNome + ".LEX");
-            relatorioLexica.WriteLine("RELATORIO TABELA DE SIMBOLOS");
+            relatorioLexica.WriteLine("RELATORIO DA ANALISE LEXICA");
             relatorioLexica.WriteLine("EQUIPE BRULEOTAR");
             relatorioLexica.WriteLine("NOME: BRUNA ANDRADE      TEL: 071-999509445   EMAIL: brunar2d2@gmail.com ");
-            relatorioLexica.WriteLine("NOME: LEONARDO SENA     TEL:    EMAIL:  ");
+            relatorioLexica.WriteLine("NOME: LEONARDO SENA     TEL: 071-99249-2638   EMAIL: leeosena21@gmail.com ");
             relatorioLexica.WriteLine("NOME: TARCIO CARVALHO      TEL:071-992284977   EMAIL: tarcioc2@gmail.com  ");
             relatorioLexica.WriteLine("");
             relatorioLexica.WriteLine("DETALHES \n");

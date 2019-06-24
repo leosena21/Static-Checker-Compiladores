@@ -39,6 +39,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
             {
                 tk.Tamanho1 = 35;
                 tk.Tamanho2 = stringAux.Length;
+                tk.Lexeme = stringAux.Substring(0, 35);
             }
             else
             {
