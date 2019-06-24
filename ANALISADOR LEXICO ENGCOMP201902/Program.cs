@@ -1,3 +1,4 @@
+using ANALISADOR_LEXICO_ENGCOMP201902;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,18 +11,21 @@ namespace ENGCOMP022019_ANALISADORLEXICO
         public static IDictionary<string, string> simbolosReservados = new Dictionary<string, string>();
         public static IDictionary<string, string> tiposReservados = new Dictionary<string, string>();
         public static int linha = 0;
-       
+        
 
         static void Main(string[] args)
         {
-   
+            StreamWriter arquivoTabela;
             string namePath;
             Console.WriteLine("Digite o nome ou caminho do arquivo: \n");
             namePath = Console.ReadLine();
+            string CaminhoNome = $@"{Directory.GetCurrentDirectory()}/Leo.TAB";
             namePath = namePath + ".191";
             char ch;
             int Tchar = 0;
             StreamReader reader;
+            //List<TabelaDeSimbolos> tabelaList = new List<TabelaDeSimbolos>();
+            List<Token> tokensList = new List<Token>();
             Token token;
             CompletePalavrasReservadas();
             CompleteSibolosReservados();
@@ -107,25 +111,39 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         Console.WriteLine(token.Categoria.Nome);
                         Console.WriteLine(token.Lexeme);
                         break;
+                    default:
+                        tokensList.Add(new Token(token));
+                        break;
                 }
 
 
                 Tchar++;
                 analisador.ClearToken();
             } while (!reader.EndOfStream);
+
             reader.Close();
             reader.Dispose();
             Console.WriteLine(" ");
             Console.ReadLine();
 
-                       
-          
+            
+            //TABELA DE SIMBOLOS                    
+            arquivoTabela = File.CreateText(CaminhoNome);  //utilizando o metodo para criar um arquivo texto e associando o caminho e nome ao metodo                      
+            arquivoTabela.WriteLine("Tabela de Símbolos"); //escrevendo o titulo   
+            arquivoTabela.WriteLine(); //pulando linha sem escrita  
 
+            int i = 1;
+            foreach (Token tok in tokensList)
+            {
+                arquivoTabela.WriteLine($"{i} {tok.Categoria.Codigo} {tok.Lexeme} {tok.Tamanho1} {tok.Tamanho2} {tok.Codigo}");
+                i++;
+
+            }
+
+            arquivoTabela.Close(); //fechando o arquivo texto com o método .Close()
 
         }
-
-
-
+        
         public static void CompleteTiposReservados()
         {
             tiposReservados.Add("CHARACTER", "C01");
