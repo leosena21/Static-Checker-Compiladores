@@ -17,21 +17,26 @@ namespace ENGCOMP022019_ANALISADORLEXICO
         {
             StreamWriter arquivoTabela;
             StreamWriter relatorioLexica;
-            string namePath;
-            string CaminhoNome;
-            Console.WriteLine("Digite o nome ou caminho do arquivo: \n");
-            namePath = Console.ReadLine();
-            if (namePath.Contains("\\"))
+            string namePath = "";
+            string CaminhoNome = "";
+            while (!File.Exists(namePath))
             {
-                String[] names = namePath.Split('\\');
-                int j = names.Length;
-                CaminhoNome = $@"{Directory.GetCurrentDirectory()}/" + names[j - 1];
+                Console.WriteLine("Digite o nome ou caminho do arquivo: \n");
+                namePath = Console.ReadLine();
+                if (namePath.Contains("\\"))
+                {
+                    String[] names = namePath.Split('\\');
+                    int j = names.Length;
+                    CaminhoNome = $@"{Directory.GetCurrentDirectory()}/" + names[j - 1];
+                }
+                else
+                {
+                    CaminhoNome = $@"{Directory.GetCurrentDirectory()}/" + namePath;
+                }
+                namePath = namePath + ".191";
+                if (!File.Exists(namePath))
+                    Console.WriteLine("Arquivo nao encontrado ou inexistente");
             }
-            else
-            {
-                CaminhoNome = $@"{Directory.GetCurrentDirectory()}/" + namePath;
-            }
-            namePath = namePath + ".191";
             char ch;
             int Tchar = 0;
             StreamReader reader;
@@ -138,7 +143,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
             //RELATORIA ANALISE LEXICA
             relatorioLexica = File.CreateText(CaminhoNome + ".LEX");
             relatorioLexica.WriteLine("RELATORIO TABELA DE SIMBOLOS");
-            relatorioLexica.WriteLine("EQUIPE XXXXXXXXXX");
+            relatorioLexica.WriteLine("EQUIPE BRULEOTA");
             relatorioLexica.WriteLine("NOME: BRUNA ANDRADE      TEL:    EMAIL:  ");
             relatorioLexica.WriteLine("NOME: LEONARDO SENA     TEL:    EMAIL:  ");
             relatorioLexica.WriteLine("NOME: TARCIO CARVALHO      TEL:071-992284977   EMAIL:tarcioc2@gmail.com  ");
