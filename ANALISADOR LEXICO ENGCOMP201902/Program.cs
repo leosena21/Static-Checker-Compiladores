@@ -92,6 +92,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
 
 
                 Tchar++;
+                analisador.ClearToken();
             } while (!reader.EndOfStream);
             reader.Close();
             reader.Dispose();

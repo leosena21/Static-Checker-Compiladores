@@ -17,9 +17,19 @@ namespace ENGCOMP022019_ANALISADORLEXICO
         char character;
         string stringAux;
         bool existeChar;
+        bool last = false;
         public AnalisadorLexico(StreamReader reader)
         {
             Reader = reader;
+        }
+
+        public void ClearToken()
+        {
+            tk.Caractere = ' ';
+            tk.Lexeme = "";
+            tk.ValorFloat = 0;
+            tk.ValorInteiro = 0;
+            tk.Codigo = null;
         }
         public Token Analex(char character)
         {
@@ -29,6 +39,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
             //FAZER A ANALISE
             while (!Reader.EndOfStream)
             {
+
                 character = Char.ToUpper(character);
                 switch (estado)
                 {
@@ -408,6 +419,10 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                             estado = 0;
                             return tk;
                         }
+                        else
+                        {
+                            stringAux = "";
+                        }
                         character = (char)Reader.Read();
                         estado = 0;
                         break;
@@ -507,13 +522,14 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         return tk;
                     case 32://case 27
 
-                        if (char.IsDigit(character))
+                        if (char.IsDigit((char)Reader.Peek()))
                         {
                             stringAux = stringAux + character;
                             character = (char)Reader.Read();
                         }
                         else
                         {
+                            stringAux = stringAux + character;
                             estado = 33;
                         }
                         break;
