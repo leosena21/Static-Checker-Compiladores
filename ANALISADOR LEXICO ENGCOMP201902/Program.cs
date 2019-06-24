@@ -24,9 +24,9 @@ namespace ENGCOMP022019_ANALISADORLEXICO
             char ch;
             int Tchar = 0;
             StreamReader reader;
+            //List<TabelaDeSimbolos> tabelaList = new List<TabelaDeSimbolos>();
+            List<Token> tokensList = new List<Token>();
             Token token;
-            List<TabelaDeSimbolos> tabelaList = new List<TabelaDeSimbolos>();
-            //List<Token> tokensList = new List<Token>();
             //TabelaDeSimbolos tabelinha;
 
             CompletePalavrasReservadas();
@@ -38,71 +38,16 @@ namespace ENGCOMP022019_ANALISADORLEXICO
             {
                 ch = (char)reader.Read();
                 token = analisador.Analex(ch);
-                tabelaList.Add(new TabelaDeSimbolos(token));
-                //switch (token.Codigo)
-                //{
+                switch (token.Codigo)
+                {
 
-                //    case "PR":
-                //        Console.WriteLine("Palavra Reservada");
-                //        Console.WriteLine(token.Lexeme);
-                //        break;
+                    case "INE":
+                        break;
 
-                //    case "TR":
-                //        Console.WriteLine("Tipo Reservado");
-                //        Console.WriteLine(token.Lexeme);
-                //        break;
-                //    case "INT":
-                //        Console.WriteLine("INTEIRO");
-                //        Console.WriteLine(token.Lexeme + " " + token.Tamanho1 + " " + token.Tamanho2);
-                //        break;
-                //    case "FLO":
-                //        Console.WriteLine("FLOAT");
-                //        Console.WriteLine(token.Lexeme + " " + token.Tamanho1 + " " + token.Tamanho2);
-                //        break;
-
-                //    //case 2:
-                //    //    //printf("%s\n", "Operador e Sinal");
-                //    //    break;
-
-                //    //case 3:
-                //    //    //printf("%s - ", "Inteiro");
-                //    //    //printf("%d\n", tk.valorInteiro);
-                //    //    break;
-
-                //    //case 4:
-                //    //    //printf("%s - ", "Real");
-                //    //    //printf("%f\n", tk.valorFloat);
-                //    //    break;
-
-                //    //case 5:
-                //    //    //printf("%s - ", "Caracter");
-                //    //    //printf("%c\n", tk.caractere);
-                //    //    break;
-
-                //    //case 6:
-                //    //    //printf("%s - ", "Cadeia de Caracter");
-                //    //    //printf("%s\n", tk.lexema);
-                //    //    break;
-
-                //    //case 7:
-                //    //    //printf("%s - ", "Booleano");
-                //    //    //printf("%s\n", tk.valorInteiro);
-                //    //    break;
-
-                //    case "INE":
-                //        Console.WriteLine(token.Categoria.Nome);
-                //        Console.WriteLine(token.Lexeme);
-                //        break;
-
-                //    case "COM":
-                //        break;
-                //    case "CH":
-                //        break;
-                //    case "ST":
-                //        Console.WriteLine(token.Categoria.Nome);
-                //        Console.WriteLine(token.Lexeme);
-                //        break;
-                //}
+                    default:
+                        tokensList.Add(new Token(token));
+                        break;
+                }
 
 
                 Tchar++;
@@ -120,14 +65,13 @@ namespace ENGCOMP022019_ANALISADORLEXICO
             arquivoTabela.WriteLine("Tabela de Símbolos"); //escrevendo o titulo   
             arquivoTabela.WriteLine(); //pulando linha sem escrita  
 
-            arquivoTabela.WriteLine("Número da entrada da tabela de símbolos: ");
             int i = 1;
-            //foreach (Token tok in tokensList)
-            //{
-            //    arquivoTabela.WriteLine($"{i} {tok.Categoria.Codigo} {tok.Lexeme} {tok.Tamanho1} {tok.Tamanho2} {tok.Codigo}" );
-            //    i++;
-                
-            //}
+            foreach (Token tok in tokensList)
+            {
+                arquivoTabela.WriteLine($"{i} {tok.Categoria.Codigo} {tok.Lexeme} {tok.Tamanho1} {tok.Tamanho2} {tok.Codigo}");
+                i++;
+
+            }
 
             arquivoTabela.Close(); //fechando o arquivo texto com o método .Close()
 
