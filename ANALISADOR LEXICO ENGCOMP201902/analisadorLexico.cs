@@ -39,6 +39,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
             {
                 tk.Tamanho1 = 35;
                 tk.Tamanho2 = stringAux.Length;
+                tk.Lexeme = stringAux.Substring(0, 35);
             }
             else
             {
@@ -67,7 +68,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         if (character == ' ' || character == '\n' || character == '\t' || character == '\r')
                         {
                             estado = 0;
-                            if (character == '\n' || character == '\r')
+                            if (character == '\n')
                                 Program.linha++;
                             character = (char)Reader.Read();
 
@@ -572,6 +573,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         Tam(tk.Lexeme);
                         tk.Codigo = "INT";
                         Tam(stringAux);
+                        AddLinha(Program.linha);
                         return tk;
                     case 32://case 27
 
