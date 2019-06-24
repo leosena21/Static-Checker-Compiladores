@@ -134,7 +134,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
             int i = 0;
             foreach (Token tok in tokensList)
             {
-                arquivoTabela.Write($"{i} {tok.Categoria.Codigo} | {tok.Lexeme} | {tok.Tamanho1} | {tok.Tamanho2} | {tok.Codigo} | ");
+                arquivoTabela.Write($"{i} | {tok.Categoria.Codigo} | {tok.Lexeme} | {tok.Tamanho1} | {tok.Tamanho2} | {tok.Codigo} | ");
                 for(int j = 0; j< tok.LinhasApareceu.Count; j++)
                 {
                     arquivoTabela.Write(tok.LinhasApareceu[j].ToString() + ",");
