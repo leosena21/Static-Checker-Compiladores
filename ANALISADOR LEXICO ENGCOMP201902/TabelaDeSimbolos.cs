@@ -11,6 +11,7 @@ namespace ANALISADOR_LEXICO_ENGCOMP201902
     {
         //public Item Itens { get; set; }
         public Token token { get; set; }
+        public List<int> PrimeirasLinhas = new List<int>(); //cinco primeiras linhas onde o símbolo aparece
 
         public TabelaDeSimbolos(Token t)
         {
