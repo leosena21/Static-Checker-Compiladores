@@ -2,8 +2,11 @@
 Projeto de compiladores: um Static Checker sobre a linguagem Comp2019-1
 
 AUTORES:
+
 Bruna Andrade @brunandrade
+
 Leonardo Sena @leosena21
+
 Tarcio Carvalho @Tarcioc2
 
 O projeto de implementação da discip![](https://ibb.co/WkTwpyD)lina Compiladores será a construção de um Static Checker (executando as tarefas de análise léxica e análise sintática) sobre a
