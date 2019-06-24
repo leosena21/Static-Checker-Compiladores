@@ -1,3 +1,4 @@
+using ANALISADOR_LEXICO_ENGCOMP201902;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,19 +10,39 @@ namespace ENGCOMP022019_ANALISADORLEXICO
         public static IDictionary<string, string> palavrasReservadas = new Dictionary<string, string>();
         public static IDictionary<string, string> simbolosReservados = new Dictionary<string, string>();
         public static IDictionary<string, string> tiposReservados = new Dictionary<string, string>();
-        public static int linha = 0;
-       
+        public static int linha = 1;
+        
 
         static void Main(string[] args)
         {
-   
-            string namePath;
-            Console.WriteLine("Digite o nome ou caminho do arquivo: \n");
-            namePath = Console.ReadLine();
-            namePath = namePath + ".191";
+            StreamWriter arquivoTabela;
+            StreamWriter relatorioLexica;
+            string namePath = "";
+            string CaminhoNome = "";
+            while (!File.Exists(namePath))
+            {
+                Console.WriteLine("Digite o nome ou caminho do arquivo: \n");
+                namePath = Console.ReadLine();
+                if (namePath.Contains("\\"))
+                {
+                    String[] names = namePath.Split('\\');
+                    int j = names.Length;
+                    CaminhoNome = $@"{Directory.GetCurrentDirectory()}/" + names[j - 1];
+                }
+                else
+                {
+                    CaminhoNome = $@"{Directory.GetCurrentDirectory()}/" + namePath;
+                }
+                namePath = namePath + ".191";
+                if (!File.Exists(namePath))
+                    Console.WriteLine("Arquivo nao encontrado ou inexistente");
+            }
             char ch;
             int Tchar = 0;
             StreamReader reader;
+            //List<TabelaDeSimbolos> tabelaList = new List<TabelaDeSimbolos>();
+            List<Token> tokensList = new List<Token>();
+            List<Token> tokensListRelatorioAnalex = new List<Token>();
             Token token;
             CompletePalavrasReservadas();
             CompleteSibolosReservados();
@@ -34,65 +55,58 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                 token = analisador.Analex(ch);
                 switch (token.Codigo)
                 {
-                    case "PR":
-                        Console.WriteLine("Palavra Reservada");
-                        Console.WriteLine(token.Lexeme);
-                        break;
-
-                    case "TR":
-                        Console.WriteLine("Tipo Reservado");
-                        Console.WriteLine(token.Lexeme);
-                        break;
-                    case "INT":
-                        Console.WriteLine("INTEIRO");
-                        Console.WriteLine(token.Lexeme + " " + token.Tamanho1 + " " + token.Tamanho2);
-                        break;
-                    case "FLO":
-                        Console.WriteLine("FLOAT");
-                        Console.WriteLine(token.Lexeme + " " + token.Tamanho1 + " " + token.Tamanho2);
-                        break;
-
-                    //case 2:
-                    //    //printf("%s\n", "Operador e Sinal");
+                    //case "PR":
+                    //    Console.WriteLine("Palavra Reservada");
+                    //    Console.WriteLine(token.Lexeme);
                     //    break;
 
-                    //case 3:
-                    //    //printf("%s - ", "Inteiro");
-                    //    //printf("%d\n", tk.valorInteiro);
+                    //case "TR":
+                    //    Console.WriteLine("Tipo Reservado");
+                    //    Console.WriteLine(token.Lexeme);
                     //    break;
-
-                    //case 4:
-                    //    //printf("%s - ", "Real");
-                    //    //printf("%f\n", tk.valorFloat);
+                    //case "INT":
+                    //    Console.WriteLine("INTEIRO");
+                    //    Console.WriteLine(token.Lexeme + " " + token.Tamanho1 + " " + token.Tamanho2);
                     //    break;
-
-                    //case 5:
-                    //    //printf("%s - ", "Caracter");
-                    //    //printf("%c\n", tk.caractere);
+                    //case "FLO":
+                    //    Console.WriteLine("FLOAT");
+                    //    Console.WriteLine(token.Lexeme + " " + token.Tamanho1 + " " + token.Tamanho2);
                     //    break;
-
-                    //case 6:
-                    //    //printf("%s - ", "Cadeia de Caracter");
-                    //    //printf("%s\n", tk.lexema);
+                    //case "IDT":
+                    //    Console.WriteLine(token.Categoria.Nome);
+                    //    Console.WriteLine(token.Lexeme);
                     //    break;
-
-                    //case 7:
-                    //    //printf("%s - ", "Booleano");
-                    //    //printf("%s\n", tk.valorInteiro);
+                    //case "FUN":
+                    //    Console.WriteLine(token.Categoria.Nome);
+                    //    break;
+                    //case "SR":
+                    //    Console.WriteLine("Simbolo Reservado");
+                    //    Console.WriteLine(token.Lexeme);
                     //    break;
 
                     case "INE":
-                        Console.WriteLine(token.Categoria.Nome);
-                        Console.WriteLine(token.Lexeme);
                         break;
 
                     case "COM":
                         break;
-                    case "CH":
-                        break;
-                    case "ST":
-                        Console.WriteLine(token.Categoria.Nome);
-                        Console.WriteLine(token.Lexeme);
+
+                    default:
+                        if(tokensList.Exists(x=> x.Lexeme == token.Lexeme))
+                        {
+                            Token t = tokensList.Find(x => x.Lexeme == token.Lexeme);
+                            if(t.LinhasApareceu.Count<5)
+                                t.LinhasApareceu.Add(token.LinhasApareceu[0]);
+                        }
+                        else
+                        {
+                            List<int> linhas = new List<int>();
+                            foreach(int linha in token.LinhasApareceu)
+                            {
+                                linhas.Add(linha);
+                            }
+                            tokensList.Add(new Token(token, linhas));
+                        }
+                        tokensListRelatorioAnalex.Add(new Token(token));
                         break;
                 }
 
@@ -100,19 +114,65 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                 Tchar++;
                 analisador.ClearToken();
             } while (!reader.EndOfStream);
+
             reader.Close();
             reader.Dispose();
-            Console.WriteLine(" ");
+
+            
+            //TABELA DE SIMBOLOS                    
+            arquivoTabela = File.CreateText(CaminhoNome + ".TAB");  //utilizando o metodo para criar um arquivo texto e associando o caminho e nome ao metodo                      
+            arquivoTabela.WriteLine("RELATORIO DA TABELA DE SIMBOLOS"); //escrevendo o titulo   
+            arquivoTabela.WriteLine("EQUIPE BRULEOTAR");
+            arquivoTabela.WriteLine("NOME: BRUNA ANDRADE      TEL: 071-999509445   EMAIL: brunar2d2@gmail.com ");
+            arquivoTabela.WriteLine("NOME: LEONARDO SENA     TEL: 071-99249-2638   EMAIL: leeosena21@gmail.com ");
+            arquivoTabela.WriteLine("NOME: TARCIO CARVALHO      TEL:071-992284977   EMAIL: tarcioc2@gmail.com  ");
+            arquivoTabela.WriteLine("");
+            arquivoTabela.WriteLine("DETALHES \n");
+            arquivoTabela.WriteLine("estrutura:   índice | Código | Lexeme | Tamanho antes de truncar | Tamanho depois de truncar | Categoria | Linhas que apareceu");
+
+
+            int i = 0;
+            foreach (Token tok in tokensList)
+            {
+                arquivoTabela.Write($"{i} | {tok.Categoria.Codigo} | {tok.Lexeme} | {tok.Tamanho1} | {tok.Tamanho2} | {tok.Codigo} | ");
+                for(int j = 0; j< tok.LinhasApareceu.Count; j++)
+                {
+                    arquivoTabela.Write(tok.LinhasApareceu[j].ToString() + ",");
+                }
+                arquivoTabela.WriteLine();
+                i++;
+
+            }
+
+            arquivoTabela.Close(); //fechando o arquivo texto com o método .Close()
+
+            //RELATORIA ANALISE LEXICA
+            relatorioLexica = File.CreateText(CaminhoNome + ".LEX");
+            relatorioLexica.WriteLine("RELATORIO DA ANALISE LEXICA");
+            relatorioLexica.WriteLine("EQUIPE BRULEOTAR");
+            relatorioLexica.WriteLine("NOME: BRUNA ANDRADE      TEL: 071-999509445   EMAIL: brunar2d2@gmail.com ");
+            relatorioLexica.WriteLine("NOME: LEONARDO SENA     TEL: 071-99249-2638   EMAIL: leeosena21@gmail.com ");
+            relatorioLexica.WriteLine("NOME: TARCIO CARVALHO      TEL:071-992284977   EMAIL: tarcioc2@gmail.com  ");
+            relatorioLexica.WriteLine("");
+            relatorioLexica.WriteLine("DETALHES \n");
+            relatorioLexica.WriteLine("estrutura:   lexeme | codigoAtomo | IndiceTabelaSimbolos");
+
+            int k = 1;
+            foreach (Token tok in tokensListRelatorioAnalex)
+            {
+                int indiceTabSimb = tokensList.FindIndex(x => x.Codigo == tok.Codigo);
+                relatorioLexica.WriteLine($"{k} | {tok.Lexeme} | {tok.Categoria.Codigo} | {indiceTabSimb}");
+                k++;
+
+            }
+
+            relatorioLexica.Close();
+
+
+            Console.WriteLine("ANALISE FINALIZADA. PRESSIONE ENTER PARA ENCERRAR.");
             Console.ReadLine();
-
-                       
-          
-
-
         }
-
-
-
+        
         public static void CompleteTiposReservados()
         {
             tiposReservados.Add("CHARACTER", "C01");
