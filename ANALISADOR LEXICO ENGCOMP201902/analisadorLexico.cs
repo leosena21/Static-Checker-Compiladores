@@ -610,7 +610,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                                 character = (char)Reader.Read();
                                 stringAux = stringAux + character;
                                 contadorChar++;
-                                tk.Categoria = new Categoria() { Nome = "MIDDLE-STRING", Codigo = "ST" };
+                                tk.Categoria = new Categoria() { Nome = "CONSTANT-STRING", Codigo = "ST" };
                                 tk.Lexeme = stringAux;
                                 tk.Codigo = "ST";
                                 tk.LinhasApareceu.Add(Program.linha);

@@ -88,6 +88,10 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         break;
                     case "CH":
                         break;
+                    case "ST":
+                        Console.WriteLine(token.Categoria.Nome);
+                        Console.WriteLine(token.Lexeme);
+                        break;
                 }
 
 
