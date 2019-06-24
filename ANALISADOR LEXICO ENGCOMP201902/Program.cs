@@ -16,6 +16,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
         static void Main(string[] args)
         {
             StreamWriter arquivoTabela;
+            StreamWriter relatorioLexica;
             string namePath;
             Console.WriteLine("Digite o nome ou caminho do arquivo: \n");
             namePath = Console.ReadLine();
@@ -123,14 +124,13 @@ namespace ENGCOMP022019_ANALISADORLEXICO
 
             reader.Close();
             reader.Dispose();
-            Console.WriteLine(" ");
-            Console.ReadLine();
 
             
             //TABELA DE SIMBOLOS                    
             arquivoTabela = File.CreateText(CaminhoNome);  //utilizando o metodo para criar um arquivo texto e associando o caminho e nome ao metodo                      
             arquivoTabela.WriteLine("Tabela de Símbolos"); //escrevendo o titulo   
             arquivoTabela.WriteLine(); //pulando linha sem escrita  
+
 
             int i = 1;
             foreach (Token tok in tokensList)
@@ -142,6 +142,29 @@ namespace ENGCOMP022019_ANALISADORLEXICO
 
             arquivoTabela.Close(); //fechando o arquivo texto com o método .Close()
 
+            //RELATORIA ANALISE LEXICA
+            relatorioLexica = File.CreateText(CaminhoNome + ".LEX");
+            relatorioLexica.WriteLine("RELATORIO TABELA DE SIMBOLOS");
+            relatorioLexica.WriteLine("EQUIPE XXXXXXXXXX");
+            relatorioLexica.WriteLine("NOME: BRUNA ANDRADE      TEL:    EMAIL:  ");
+            relatorioLexica.WriteLine("NOME: LEONARDO SENA     TEL:    EMAIL:  ");
+            relatorioLexica.WriteLine("NOME: TARCIO CARVALHO      TEL:071-992284977   EMAIL:tarcioc2@gmail.com  ");
+            relatorioLexica.WriteLine("");
+            relatorioLexica.WriteLine("DETALHES \n");
+            relatorioLexica.WriteLine("estrutura:   lexeme | codigoAtomo | IndiceTabelaSimbolos");
+
+            foreach (Token tok in tokensList)
+            {
+                relatorioLexica.WriteLine($"{i} {tok.Lexeme} | {tok.Codigo} | IndiceTabelaSimbolos");
+                i++;
+
+            }
+
+            relatorioLexica.Close();
+
+
+            Console.WriteLine("ANALISE FINALIZADA. PRESSIONE ENTER PARA ENCERRAR.");
+            Console.ReadLine();
         }
         
         public static void CompleteTiposReservados()
