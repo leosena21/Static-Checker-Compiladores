@@ -16,6 +16,8 @@ namespace ENGCOMP022019_ANALISADORLEXICO
         public int QuantidadeAparicoes { get; set; }
         public Categoria Categoria { get; set; }
 
+        public int Indice { get; set; } //número da entrada da tabela de símbolos 
+        public List<int> PrimeirasLinhas = new List<int>(); //cinco primeiras linhas onde o símbolo aparece
         public Token()
         {
 
