@@ -230,6 +230,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 3:
                         tk.Categoria = new Categoria() {Nome ="ABRE_PARENTESES", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = character.ToString();
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         estado = 0;
@@ -237,6 +238,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 4:
                         tk.Categoria = new Categoria() { Nome = "FECHA_PARENTESES", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = character.ToString();
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         estado = 0;
@@ -244,6 +246,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 5:
                         tk.Categoria = new Categoria() { Nome = "MAIS", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = character.ToString();
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         estado = 0;
@@ -251,6 +254,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 6:
                         tk.Categoria = new Categoria() { Nome = "MENOS", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = character.ToString();
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         estado = 0;
@@ -258,6 +262,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 7:
                         tk.Categoria = new Categoria() { Nome = "E_COMERCIAL", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = character.ToString();
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         estado = 0;
@@ -265,6 +270,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 8:
                         tk.Categoria = new Categoria() { Nome = "SHARP", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = character.ToString();
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         estado = 0;
@@ -282,6 +288,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         {
                             tk.Categoria = new Categoria() { Nome = "MENOR", Codigo = Program.simbolosReservados[character.ToString()] };
                             tk.Lexeme = character.ToString();
+                            Tam(tk.Lexeme);
                             tk.Codigo = "SR";
                             AddLinha(Program.linha);
                             estado = 0;
@@ -301,6 +308,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         {
                             tk.Categoria = new Categoria() { Nome = "MAIOR", Codigo = Program.simbolosReservados[character.ToString()] };
                             tk.Lexeme = character.ToString();
+                            Tam(tk.Lexeme);
                             tk.Codigo = "SR";
                             AddLinha(Program.linha);
                             estado = 0;
@@ -319,6 +327,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         {
                             tk.Categoria = new Categoria() { Nome = "ATRIBUICAO", Codigo = Program.simbolosReservados[character.ToString()] };
                             tk.Lexeme = character.ToString();
+                            Tam(tk.Lexeme);
                             tk.Codigo = "SR";
                             AddLinha(Program.linha);
                             estado = 0;
@@ -337,6 +346,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         {
                             tk.Categoria = new Categoria() { Nome = "EXCLAMACAO", Codigo = Program.simbolosReservados[character.ToString()] };
                             tk.Lexeme = character.ToString();
+                            Tam(tk.Lexeme);
                             tk.Codigo = "SR";
                             AddLinha(Program.linha);
                             estado = 0;
@@ -346,6 +356,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 13:
                         tk.Categoria = new Categoria() { Nome = "DIFERENTE", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = stringAux;
+                        Tam(stringAux);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         stringAux = "";
@@ -354,6 +365,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 14:
                         tk.Categoria = new Categoria() { Nome = "PONTO_E_VIRGULA", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = character.ToString();
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         estado = 0;
@@ -361,6 +373,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 15:
                         tk.Categoria = new Categoria() { Nome = "VIRGULA", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = character.ToString();
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         estado = 0;
@@ -368,6 +381,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 16:
                         tk.Categoria = new Categoria() { Nome = "ABRE_COLCHETES", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = character.ToString();
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         estado = 0;
@@ -375,6 +389,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 17:
                         tk.Categoria = new Categoria() { Nome = "FECHA_COLCHETES", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = character.ToString();
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         estado = 0;
@@ -382,6 +397,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 18:
                         tk.Categoria = new Categoria() { Nome = "ABRE_CHAVES", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = character.ToString();
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         estado = 0;
@@ -389,6 +405,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 22:
                         tk.Categoria = new Categoria() { Nome = "FECHA_CHAVES", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = character.ToString();
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         estado = 0;
@@ -396,6 +413,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 19:
                         tk.Categoria = new Categoria() { Nome = "MENOR_IGUAL", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = stringAux;
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         stringAux = "";
@@ -404,6 +422,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 20:
                         tk.Categoria = new Categoria() { Nome = "MAIOR_IGUAL", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = stringAux;
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         stringAux = "";
@@ -412,6 +431,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 21:
                         tk.Categoria = new Categoria() { Nome = "IGUAL", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = stringAux;
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         stringAux = "";
@@ -420,6 +440,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 23:
                         tk.Categoria = new Categoria() { Nome = "PERCENTUAL", Codigo = Program.simbolosReservados[character.ToString()] };
                         tk.Lexeme = character.ToString();
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         estado = 0;
@@ -429,6 +450,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         {
                             tk.Lexeme = stringAux;
                             tk.Categoria = new Categoria() { Nome = stringAux, Codigo = Program.palavrasReservadas[stringAux] };
+                            Tam(tk.Lexeme);
                             tk.Codigo = "PR";
                             AddLinha(Program.linha);
                             stringAux = "";
@@ -439,6 +461,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         {
                             tk.Lexeme = stringAux;
                             tk.Categoria = new Categoria() { Nome = stringAux, Codigo = Program.tiposReservados[stringAux] };
+                            Tam(tk.Lexeme);
                             tk.Codigo = "TR";
                             AddLinha(Program.linha);
                             stringAux = "";
@@ -459,6 +482,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 25:
                         tk.Categoria = new Categoria() { Nome = "ASTERISCO", Codigo = Program.palavrasReservadas[character.ToString()] };
                         tk.Lexeme = character.ToString();
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         estado = 0;
@@ -466,6 +490,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 26:
                         tk.Categoria = new Categoria() { Nome = "PIPE", Codigo = Program.palavrasReservadas[character.ToString()] };
                         tk.Lexeme = character.ToString();
+                        Tam(tk.Lexeme);
                         tk.Codigo = "SR";
                         AddLinha(Program.linha);
                         estado = 0;
@@ -486,6 +511,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         {
                             tk.Categoria = new Categoria() { Nome = "DIVISAO", Codigo = Program.palavrasReservadas[character.ToString()] };
                             tk.Lexeme = character.ToString();
+                            Tam(tk.Lexeme);
                             tk.Codigo = "SR";
                             AddLinha(Program.linha);
                             estado = 0;
@@ -534,6 +560,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                             Console.WriteLine("Tentativa de formar um float");
                             tk.Categoria = new Categoria() { Nome = "INEXISTENTE", Codigo = "NUL" };
                             tk.Lexeme = stringAux;
+                            Tam(tk.Lexeme);
                             tk.Codigo = "INE";
                             AddLinha(Program.linha);
                             return tk;
@@ -542,6 +569,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 31: //case25
                         tk.Categoria = new Categoria() { Nome = "INTEIRO", Codigo = "INT" };
                         tk.Lexeme = stringAux;
+                        Tam(tk.Lexeme);
                         tk.Codigo = "INT";
                         Tam(stringAux);
                         return tk;
@@ -561,6 +589,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case 33:
                         tk.Categoria = new Categoria() { Nome = "FLOAT", Codigo = "FLO" };
                         tk.Lexeme = stringAux;
+                        Tam(tk.Lexeme);
                         tk.Codigo = "FLO";
                         AddLinha(Program.linha);
                         Tam(stringAux);
@@ -575,6 +604,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                                 stringAux = stringAux + character;
                                 tk.Categoria = new Categoria() { Nome = "CHAR", Codigo = "CH" };
                                 tk.Lexeme = stringAux;
+                                Tam(tk.Lexeme);
                                 tk.Codigo = "CH";
                                 AddLinha(Program.linha);
                                 estado = 0;
