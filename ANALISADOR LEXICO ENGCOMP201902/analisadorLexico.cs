@@ -10,11 +10,11 @@ namespace ENGCOMP022019_ANALISADORLEXICO
     {
         StreamReader Reader { get; set; }
         Token tk = new Token() {Codigo = "COM"};
-        int i = 0;
-        int j = 0;
+        //int i = 0;
+        //int j = 0;
         int estado = 0;
         int contadorChar;
-        char character;
+        //char character;
         string stringAux;
         bool existeChar;
         bool last = false;

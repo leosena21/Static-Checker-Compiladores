@@ -18,15 +18,26 @@ namespace ENGCOMP022019_ANALISADORLEXICO
             StreamWriter arquivoTabela;
             StreamWriter relatorioLexica;
             string namePath;
+            string CaminhoNome;
             Console.WriteLine("Digite o nome ou caminho do arquivo: \n");
             namePath = Console.ReadLine();
-            string CaminhoNome = $@"{Directory.GetCurrentDirectory()}/Leo.TAB";
+            if (namePath.Contains("\\"))
+            {
+                String[] names = namePath.Split('\\');
+                int j = names.Length;
+                CaminhoNome = $@"{Directory.GetCurrentDirectory()}/" + names[j - 1];
+            }
+            else
+            {
+                CaminhoNome = $@"{Directory.GetCurrentDirectory()}/" + namePath;
+            }
             namePath = namePath + ".191";
             char ch;
             int Tchar = 0;
             StreamReader reader;
             //List<TabelaDeSimbolos> tabelaList = new List<TabelaDeSimbolos>();
             List<Token> tokensList = new List<Token>();
+            List<Token> tokensListRelatorioAnalex = new List<Token>();
             Token token;
             CompletePalavrasReservadas();
             CompleteSibolosReservados();
@@ -68,50 +79,12 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     //    Console.WriteLine(token.Lexeme);
                     //    break;
 
-                    //case 2:
-                    //    //printf("%s\n", "Operador e Sinal");
-                    //    break;
+                    case "INE":
+                        break;
 
-                    //case 3:
-                    //    //printf("%s - ", "Inteiro");
-                    //    //printf("%d\n", tk.valorInteiro);
-                    //    break;
+                    case "COM":
+                        break;
 
-                    //case 4:
-                    //    //printf("%s - ", "Real");
-                    //    //printf("%f\n", tk.valorFloat);
-                    //    break;
-
-                    //case 5:
-                    //    //printf("%s - ", "Caracter");
-                    //    //printf("%c\n", tk.caractere);
-                    //    break;
-
-                    //case 6:
-                    //    //printf("%s - ", "Cadeia de Caracter");
-                    //    //printf("%s\n", tk.lexema);
-                    //    break;
-
-                    //case 7:
-                    //    //printf("%s - ", "Booleano");
-                    //    //printf("%s\n", tk.valorInteiro);
-                    //    break;
-
-                    //case "INE":
-                    //    Console.WriteLine(token.Categoria.Nome);
-                    //    Console.WriteLine(token.Lexeme);
-                    //    break;
-
-                    //case "COM":
-                    //    break;
-                    //case "CH":
-                    //    Console.WriteLine(token.Categoria.Nome);
-                    //    Console.WriteLine(token.Lexeme);
-                    //    break;
-                    //case "ST":
-                    //    Console.WriteLine(token.Categoria.Nome);
-                    //    Console.WriteLine(token.Lexeme);
-                    //    break;
                     default:
                         if(tokensList.Exists(x=> x.Lexeme == token.Lexeme))
                         {
@@ -128,6 +101,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                             }
                             tokensList.Add(new Token(token, linhas));
                         }
+                        tokensListRelatorioAnalex.Add(new Token(token));
                         break;
                 }
 
@@ -141,7 +115,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
 
             
             //TABELA DE SIMBOLOS                    
-            arquivoTabela = File.CreateText(CaminhoNome);  //utilizando o metodo para criar um arquivo texto e associando o caminho e nome ao metodo                      
+            arquivoTabela = File.CreateText(CaminhoNome + ".TAB");  //utilizando o metodo para criar um arquivo texto e associando o caminho e nome ao metodo                      
             arquivoTabela.WriteLine("Tabela de Símbolos"); //escrevendo o titulo   
             arquivoTabela.WriteLine(); //pulando linha sem escrita  
 
@@ -172,10 +146,12 @@ namespace ENGCOMP022019_ANALISADORLEXICO
             relatorioLexica.WriteLine("DETALHES \n");
             relatorioLexica.WriteLine("estrutura:   lexeme | codigoAtomo | IndiceTabelaSimbolos");
 
-            foreach (Token tok in tokensList)
+            int k = 1;
+            foreach (Token tok in tokensListRelatorioAnalex)
             {
-                relatorioLexica.WriteLine($"{i} {tok.Lexeme} | {tok.Codigo} | IndiceTabelaSimbolos");
-                i++;
+                int indiceTabSimb = tokensList.FindIndex(x => x.Codigo == tok.Codigo);
+                relatorioLexica.WriteLine($"{k} | {tok.Lexeme} | {tok.Categoria.Codigo} | {indiceTabSimb}");
+                k++;
 
             }
 
