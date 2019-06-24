@@ -9,8 +9,13 @@ namespace ANALISADOR_LEXICO_ENGCOMP201902
 {
     public class TabelaDeSimbolos
     {
-        public Item Itens { get; set; }
+        //public Item Itens { get; set; }
         public Token token { get; set; }
+
+        public TabelaDeSimbolos(Token t)
+        {
+            token = t;
+        }
         
     }
 
