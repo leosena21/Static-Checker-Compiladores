@@ -10,9 +10,11 @@ namespace ENGCOMP022019_ANALISADORLEXICO
         public static IDictionary<string, string> simbolosReservados = new Dictionary<string, string>();
         public static IDictionary<string, string> tiposReservados = new Dictionary<string, string>();
         public static int linha = 0;
+       
 
         static void Main(string[] args)
         {
+            StreamWriter arquivoTabela;
             string namePath;
             Console.WriteLine("Digite o nome ou caminho do arquivo: \n");
             namePath = Console.ReadLine();
@@ -98,6 +100,18 @@ namespace ENGCOMP022019_ANALISADORLEXICO
             reader.Dispose();
             Console.WriteLine(" ");
             Console.ReadLine();
+
+                       
+            string CaminhoNome = "C:\\Users\\Bruna Andrade\\TabelaSimbolos.txt";
+
+            arquivoTabela = File.CreateText(CaminhoNome);  //utilizando o metodo para criar um arquivo texto e associando o caminho e nome ao metodo                      
+            arquivoTabela.WriteLine("Tabela de Símbolos"); //escrevendo o titulo           
+            arquivoTabela.WriteLine(); //pulando linha sem escrita   
+            arquivoTabela.WriteLine(); //pulando linha sem escrita   
+
+            arquivoTabela.Close(); //fechando o arquivo texto com o método .Close()
+
+
         }
 
 
