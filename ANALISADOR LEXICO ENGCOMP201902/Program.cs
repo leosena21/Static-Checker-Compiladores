@@ -10,7 +10,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
         public static IDictionary<string, string> palavrasReservadas = new Dictionary<string, string>();
         public static IDictionary<string, string> simbolosReservados = new Dictionary<string, string>();
         public static IDictionary<string, string> tiposReservados = new Dictionary<string, string>();
-        public static int linha = 0;
+        public static int linha = 1;
         
 
         static void Main(string[] args)
@@ -38,34 +38,34 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                 token = analisador.Analex(ch);
                 switch (token.Codigo)
                 {
-                    case "PR":
-                        Console.WriteLine("Palavra Reservada");
-                        Console.WriteLine(token.Lexeme);
-                        break;
+                    //case "PR":
+                    //    Console.WriteLine("Palavra Reservada");
+                    //    Console.WriteLine(token.Lexeme);
+                    //    break;
 
-                    case "TR":
-                        Console.WriteLine("Tipo Reservado");
-                        Console.WriteLine(token.Lexeme);
-                        break;
-                    case "INT":
-                        Console.WriteLine("INTEIRO");
-                        Console.WriteLine(token.Lexeme + " " + token.Tamanho1 + " " + token.Tamanho2);
-                        break;
-                    case "FLO":
-                        Console.WriteLine("FLOAT");
-                        Console.WriteLine(token.Lexeme + " " + token.Tamanho1 + " " + token.Tamanho2);
-                        break;
-                    case "IDT":
-                        Console.WriteLine(token.Categoria.Nome);
-                        Console.WriteLine(token.Lexeme);
-                        break;
-                    case "FUN":
-                        Console.WriteLine(token.Categoria.Nome);
-                        break;
-                    case "SR":
-                        Console.WriteLine("Simbolo Reservado");
-                        Console.WriteLine(token.Lexeme);
-                        break;
+                    //case "TR":
+                    //    Console.WriteLine("Tipo Reservado");
+                    //    Console.WriteLine(token.Lexeme);
+                    //    break;
+                    //case "INT":
+                    //    Console.WriteLine("INTEIRO");
+                    //    Console.WriteLine(token.Lexeme + " " + token.Tamanho1 + " " + token.Tamanho2);
+                    //    break;
+                    //case "FLO":
+                    //    Console.WriteLine("FLOAT");
+                    //    Console.WriteLine(token.Lexeme + " " + token.Tamanho1 + " " + token.Tamanho2);
+                    //    break;
+                    //case "IDT":
+                    //    Console.WriteLine(token.Categoria.Nome);
+                    //    Console.WriteLine(token.Lexeme);
+                    //    break;
+                    //case "FUN":
+                    //    Console.WriteLine(token.Categoria.Nome);
+                    //    break;
+                    //case "SR":
+                    //    Console.WriteLine("Simbolo Reservado");
+                    //    Console.WriteLine(token.Lexeme);
+                    //    break;
 
                     //case 2:
                     //    //printf("%s\n", "Operador e Sinal");
@@ -96,23 +96,37 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     //    //printf("%s\n", tk.valorInteiro);
                     //    break;
 
-                    case "INE":
-                        Console.WriteLine(token.Categoria.Nome);
-                        Console.WriteLine(token.Lexeme);
-                        break;
+                    //case "INE":
+                    //    Console.WriteLine(token.Categoria.Nome);
+                    //    Console.WriteLine(token.Lexeme);
+                    //    break;
 
-                    case "COM":
-                        break;
-                    case "CH":
-                        Console.WriteLine(token.Categoria.Nome);
-                        Console.WriteLine(token.Lexeme);
-                        break;
-                    case "ST":
-                        Console.WriteLine(token.Categoria.Nome);
-                        Console.WriteLine(token.Lexeme);
-                        break;
+                    //case "COM":
+                    //    break;
+                    //case "CH":
+                    //    Console.WriteLine(token.Categoria.Nome);
+                    //    Console.WriteLine(token.Lexeme);
+                    //    break;
+                    //case "ST":
+                    //    Console.WriteLine(token.Categoria.Nome);
+                    //    Console.WriteLine(token.Lexeme);
+                    //    break;
                     default:
-                        tokensList.Add(new Token(token));
+                        if(tokensList.Exists(x=> x.Lexeme == token.Lexeme))
+                        {
+                            Token t = tokensList.Find(x => x.Lexeme == token.Lexeme);
+                            if(t.LinhasApareceu.Count<5)
+                                t.LinhasApareceu.Add(token.LinhasApareceu[0]);
+                        }
+                        else
+                        {
+                            List<int> linhas = new List<int>();
+                            foreach(int linha in token.LinhasApareceu)
+                            {
+                                linhas.Add(linha);
+                            }
+                            tokensList.Add(new Token(token, linhas));
+                        }
                         break;
                 }
 
@@ -135,7 +149,12 @@ namespace ENGCOMP022019_ANALISADORLEXICO
             int i = 1;
             foreach (Token tok in tokensList)
             {
-                arquivoTabela.WriteLine($"{i} {tok.Categoria.Codigo} {tok.Lexeme} {tok.Tamanho1} {tok.Tamanho2} {tok.Codigo}");
+                arquivoTabela.Write($"{i} {tok.Categoria.Codigo} {tok.Lexeme} {tok.Tamanho1} {tok.Tamanho2} {tok.Codigo} ");
+                for(int j = 0; j< tok.LinhasApareceu.Count; j++)
+                {
+                    arquivoTabela.Write(tok.LinhasApareceu[j].ToString() + ",");
+                }
+                arquivoTabela.WriteLine();
                 i++;
 
             }

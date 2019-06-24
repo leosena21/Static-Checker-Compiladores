@@ -20,12 +20,12 @@ namespace ENGCOMP022019_ANALISADORLEXICO
         {
 
         }
-        public Token(Token t)
+        public Token(Token t, List<int> list)
         {
             Caractere = t.Caractere;
             Lexeme = t.Lexeme;
             Codigo = t.Codigo;
-            LinhasApareceu = t.LinhasApareceu;
+            LinhasApareceu = list;
             Tamanho1 = t.Tamanho1;
             Tamanho2 = t.Tamanho2;
             QuantidadeAparicoes = t.QuantidadeAparicoes;
