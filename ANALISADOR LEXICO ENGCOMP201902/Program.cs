@@ -45,11 +45,11 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         break;
                     case "INT":
                         Console.WriteLine("INTEIRO");
-                        Console.WriteLine(token.Lexeme);
+                        Console.WriteLine(token.Lexeme + " " + token.Tamanho1 + " " + token.Tamanho2);
                         break;
                     case "FLO":
                         Console.WriteLine("FLOAT");
-                        Console.WriteLine(token.Lexeme);
+                        Console.WriteLine(token.Lexeme + " " + token.Tamanho1 + " " + token.Tamanho2);
                         break;
 
                     //case 2:
@@ -89,6 +89,10 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case "COM":
                         break;
                     case "CH":
+                        break;
+                    case "ST":
+                        Console.WriteLine(token.Categoria.Nome);
+                        Console.WriteLine(token.Lexeme);
                         break;
                 }
 
