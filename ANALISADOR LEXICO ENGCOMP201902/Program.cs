@@ -139,9 +139,9 @@ namespace ENGCOMP022019_ANALISADORLEXICO
             relatorioLexica = File.CreateText(CaminhoNome + ".LEX");
             relatorioLexica.WriteLine("RELATORIO TABELA DE SIMBOLOS");
             relatorioLexica.WriteLine("EQUIPE XXXXXXXXXX");
-            relatorioLexica.WriteLine("NOME: BRUNA ANDRADE      TEL:    EMAIL:  ");
+            relatorioLexica.WriteLine("NOME: BRUNA ANDRADE      TEL: 071-999509445   EMAIL: brunar2d2@gmail.com ");
             relatorioLexica.WriteLine("NOME: LEONARDO SENA     TEL:    EMAIL:  ");
-            relatorioLexica.WriteLine("NOME: TARCIO CARVALHO      TEL:071-992284977   EMAIL:tarcioc2@gmail.com  ");
+            relatorioLexica.WriteLine("NOME: TARCIO CARVALHO      TEL:071-992284977   EMAIL: tarcioc2@gmail.com  ");
             relatorioLexica.WriteLine("");
             relatorioLexica.WriteLine("DETALHES \n");
             relatorioLexica.WriteLine("estrutura:   lexeme | codigoAtomo | IndiceTabelaSimbolos");
