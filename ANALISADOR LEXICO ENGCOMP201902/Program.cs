@@ -51,6 +51,14 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         Console.WriteLine("FLOAT");
                         Console.WriteLine(token.Lexeme + " " + token.Tamanho1 + " " + token.Tamanho2);
                         break;
+                    case "IDT":
+                        Console.WriteLine(token.Categoria.Nome);
+                        Console.WriteLine(token.Lexeme);
+                        break;
+                    case "FUN":
+                        Console.WriteLine(token.Categoria.Nome);
+                        Console.WriteLine(token.Lexeme);
+                        break;
 
                     //case 2:
                     //    //printf("%s\n", "Operador e Sinal");
@@ -89,6 +97,8 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                     case "COM":
                         break;
                     case "CH":
+                        Console.WriteLine(token.Categoria.Nome);
+                        Console.WriteLine(token.Lexeme);
                         break;
                     case "ST":
                         Console.WriteLine(token.Categoria.Nome);

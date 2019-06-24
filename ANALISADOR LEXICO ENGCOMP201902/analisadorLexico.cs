@@ -52,7 +52,7 @@ namespace ENGCOMP022019_ANALISADORLEXICO
 
             //char ch = (char)Reader.Read();
             //FAZER A ANALISE
-            while (1==1)
+            while ('T'=='T')
             {
 
                 character = Char.ToUpper(character);
@@ -164,6 +164,12 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                         else if (character == '\"')
                         {
                             estado = 35;
+                            stringAux = stringAux + character;
+                            contadorChar++;
+                        }
+                        else if (character == '_')
+                        {
+                            estado = 36;
                             stringAux = stringAux + character;
                             contadorChar++;
                         }
@@ -434,12 +440,16 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                             estado = 0;
                             return tk;
                         }
+                        else if (!(stringAux.Contains("-")))
+                        {
+                            estado = 36;
+                        }
                         else
                         {
                             stringAux = "";
+                            character = (char)Reader.Read();
+                            estado = 0;
                         }
-                        character = (char)Reader.Read();
-                        estado = 0;
                         break;
                     case 25:
                         tk.Categoria = new Categoria() { Nome = "ASTERISCO", Codigo = Program.palavrasReservadas[character.ToString()] };
@@ -655,6 +665,38 @@ namespace ENGCOMP022019_ANALISADORLEXICO
                             stringAux = "";
                             return tk;
                         }
+                        break;
+                    case 36:
+                        if((char.IsLetterOrDigit((char)Reader.Peek())) || (char)Reader.Peek() == '_')
+                        {
+                            character = (char)Reader.Read();
+                            if(stringAux.Length < 35)
+                                stringAux = stringAux + character;
+                            contadorChar++;
+
+                        }
+                        else
+                        {
+                            if((char)Reader.Peek() == '(')
+                            {
+                                tk.Categoria = new Categoria() { Nome = "FUNCTION", Codigo = "FUN" };
+                                tk.Lexeme = stringAux;
+                                tk.Codigo = "FUN";
+                                tk.LinhasApareceu.Add(Program.linha);
+                                tk.Tamanho2 = contadorChar;
+                            }
+                            else
+                            {
+                                tk.Categoria = new Categoria() { Nome = "IDENTIFIER", Codigo = "IDT" };
+                                tk.Lexeme = stringAux;
+                                tk.Codigo = "IDT";
+                                tk.LinhasApareceu.Add(Program.linha);
+                                tk.Tamanho2 = contadorChar;
+                            }
+                            ClearToken();
+                            estado = 0;
+                        }
+
                         break;
                     default:
                         break;
